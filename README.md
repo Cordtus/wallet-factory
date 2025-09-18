@@ -10,9 +10,9 @@ Bulk wallet generator for Cosmos SDK chains supporting both standard secp256k1 a
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/wallet-factory.git
-cd wallet-factory
-cargo build --release
+clone this repo
+
+cd wallet-factory && cargo build --release
 ```
 
 ## Usage
@@ -65,7 +65,7 @@ cargo build --release
 }
 ```
 
-## Technical Details
+## Workflows
 
 ### Key Derivation
 - BIP39 mnemonic → seed (PBKDF2, 2048 iterations)
@@ -80,14 +80,9 @@ cargo build --release
 **ethsecp256k1:**
 - Uncompressed public key (65 bytes) → remove 0x04 prefix → Keccak256 → last 20 bytes → bech32 + hex
 
-## Requirements
-
-- Rust 1.70+
-- 8GB RAM minimum
-
 ## Security
 
-Output files contain unencrypted private keys. Handle with appropriate security measures.
+Output files contain unencrypted private keys. For testing and educational purposes only. Do not use working mainnet mnemonics!!
 
 ## License
 
