@@ -1,0 +1,23 @@
+# Build
+target/
+
+# Output files
+*.json
+data/
+wallets/
+
+# Sensitive data
+.mnemonic
+*.key
+*.pem
+*.seed
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Misc
+.final_notes

@@ -1,0 +1,40 @@
+[package]
+name = "wallet-generator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Core crypto
+secp256k1 = { version = "0.28", features = ["rand", "hashes"] }
+tiny-hderive = "0.3"
+sha2 = "0.10"  # For SHA256 (standard Cosmos secp256k1)
+sha3 = "0.10"  # For Keccak256 (ethsecp256k1)
+ripemd = "0.1"  # For RIPEMD160 (standard Cosmos secp256k1)
+bech32 = "0.11"
+hex = "0.4"
+base64 = "0.22"
+
+# BIP39 mnemonic support
+bip39 = "2.0"
+
+# Performance and parallelism
+rayon = "1.8"
+num_cpus = "1.16"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# CLI and progress
+clap = { version = "4.4", features = ["derive"] }
+indicatif = "0.17"
+
+# Error handling
+anyhow = "1.0"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
