@@ -15,7 +15,7 @@ pub struct Args {
     #[arg(short, long)]
     pub count: usize,
 
-    /// Mnemonic phrase (will prompt if not provided)
+    /// Mnemonic phrase (uses default test mnemonic if not provided)
     #[arg(short, long)]
     pub mnemonic: Option<String>,
 

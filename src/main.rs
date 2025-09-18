@@ -34,14 +34,15 @@ fn main() -> Result<()> {
         std::io::stdin().read_line(&mut input)?;
     }
 
+    // Default mnemonic if not specified
+    const DEFAULT_MNEMONIC: &str = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
+
     // Get mnemonic
     let mnemonic_str = if let Some(m) = args.mnemonic {
         m
     } else {
-        println!("Enter your mnemonic phrase:");
-        let mut input = String::new();
-        std::io::stdin().read_line(&mut input)?;
-        input.trim().to_string()
+        println!("No mnemonic provided. Using default mnemonic: {}", DEFAULT_MNEMONIC);
+        DEFAULT_MNEMONIC.to_string()
     };
 
     // Parse mnemonic and create seed
@@ -187,7 +188,7 @@ fn main() -> Result<()> {
     let file_size = fs::metadata(&args.output)?.len();
     let file_size_mb = file_size as f64 / (1024.0 * 1024.0);
 
-    println!("\nPerformance Report:");
+    println!("\nSummary:");
     println!("────────────────────");
     println!("Wallets generated: {}",
         args.count.to_string()
