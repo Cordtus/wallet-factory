@@ -25,7 +25,7 @@ fn main() -> Result<()> {
     // Estimate memory usage
     let estimated_memory_mb = (args.count * 400) / (1024 * 1024);
     if estimated_memory_mb > 100_000 {
-        println!("⚠️  Warning: Estimated memory usage: ~{}GB", estimated_memory_mb / 1024);
+        println!("Warning: Estimated memory usage: ~{}GB", estimated_memory_mb / 1024);
         println!("   Ensure you have sufficient RAM available.");
 
         // Give user a chance to abort
@@ -62,7 +62,7 @@ fn main() -> Result<()> {
         .build_global()
         .unwrap();
 
-    println!("\n⚡ Cosmos Wallet Generator");
+    println!("\nCosmos Wallet Generator");
     println!("Key type: {:?}", args.key_type);
     println!("Platform: {} {}", std::env::consts::OS, std::env::consts::ARCH);
     println!("Threads: {}", num_threads);
@@ -187,9 +187,9 @@ fn main() -> Result<()> {
     let file_size = fs::metadata(&args.output)?.len();
     let file_size_mb = file_size as f64 / (1024.0 * 1024.0);
 
-    println!("\n✅ Performance Report:");
+    println!("\nPerformance Report:");
     println!("────────────────────");
-    println!("📊 Wallets generated: {}",
+    println!("Wallets generated: {}",
         args.count.to_string()
             .as_bytes()
             .rchunks(3)
@@ -197,12 +197,12 @@ fn main() -> Result<()> {
             .map(|chunk| std::str::from_utf8(chunk).unwrap())
             .collect::<Vec<_>>()
             .join(","));
-    println!("⏱️  Generation time: {:.2}s", generation_time.as_secs_f64());
-    println!("⏱️  Write time: {:.2}s", write_time.as_secs_f64());
-    println!("⏱️  Total time: {:.2}s", total_time.as_secs_f64());
-    println!("🚀 Generation rate: {:.0} wallets/sec", args.count as f64 / generation_time.as_secs_f64());
-    println!("💾 File size: {:.2} MB", file_size_mb);
-    println!("📁 Output: {}", args.output);
+    println!("Generation time: {:.2}s", generation_time.as_secs_f64());
+    println!("Write time: {:.2}s", write_time.as_secs_f64());
+    println!("Total time: {:.2}s", total_time.as_secs_f64());
+    println!("Generation rate: {:.0} wallets/sec", args.count as f64 / generation_time.as_secs_f64());
+    println!("File size: {:.2} MB", file_size_mb);
+    println!("Output: {}", args.output);
 
     Ok(())
 }
